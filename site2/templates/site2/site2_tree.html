@@ -1,0 +1,16 @@
+{% extends "site2/layout.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-site1tree{% endblock %}
+
+{% block display %}
+
+<br>
+<h1>Pages tree</h1>
+<br>
+
+{{ menu|richtext }}
+
+{% endblock %}
+

@@ -1,0 +1,10 @@
+{% extends "site2/layout.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-site2home{% endblock %}
+
+{% block display %}
+    {{ page.body|richtext }}
+{% endblock %}
+

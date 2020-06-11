@@ -1,0 +1,21 @@
+{% extends "site2/layout.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-site2categoryindex{% endblock %}
+
+{% block display %}
+
+<h1>{{ page.title }}</h1>
+
+   {% for category in categories %}
+       <ul>
+             <li>
+                   <a href = "../get-posts-with-category/?name={{ category.name }}">{{ category.name }}</a>
+             </li>
+       </ul>
+   {% endfor %}
+
+
+{% endblock %}
+

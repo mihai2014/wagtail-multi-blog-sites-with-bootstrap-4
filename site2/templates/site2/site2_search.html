@@ -1,0 +1,37 @@
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-site2search{% endblock %}
+
+
+    <h1>Search results:</h1>
+
+    {% for post in posts %}
+
+        <p><a href="{{ post.url }}">{{ post.title }}</a></p>
+
+         <!-- Blog Post -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+              {{ post.intro }}
+              <p class="card-text">
+
+                {% comment %}
+                {{ post.body|truncatewords:20|richtext }}
+                {% endcomment %}
+
+              </p>
+              <a href="{{ post.url }}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{ post.date }} by ...
+              <a href="#">Start Bootstrap</a>
+            </div>
+          </div>
+
+    {% endfor %}
+
+    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+
+
+
