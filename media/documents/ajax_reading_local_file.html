@@ -1,0 +1,72 @@
+<html>
+
+<head>
+<title>Ajax local file reading</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<style>
+#info{
+    border: 1px solid black;
+    min-height: 1.5em;
+    margin-top: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<p>Base directory is current location of this file</p>
+
+<button id="button" type="button">Read local file</button>
+<input id="name" type="text">
+<div id="info"></div>
+
+</body>
+
+<script>
+function getXHR(){
+    var xhr = false;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else { //code for IE6, IE5
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    return xhr;
+}
+
+function REQ(url){
+    xhr = getXHR();
+    if(!xhr) message1("Ajax is not supported by your browser!");
+
+    xhr.onload = function() {
+        if (xhr.status === 200){
+            document.getElementById("info").innerHTML = xhr.responseText;
+        }
+        else{
+            document.getElementById("info").innerHTML = xhr.status;
+        }
+    }
+
+    xhr.onerror = function() {
+	document.getElementById("info").innerHTML = "Error: no response";
+    }
+
+    xhr.open('GET', url);
+    xhr.responseType = "text";
+    try{
+        xhr.send(null);
+    }	
+    catch(e){ document.getElementById("info").innerHTML = "File not found" }
+}
+
+var button = document.getElementById("button");
+
+button.onclick = function(){
+    var fileName = document.getElementById("name").value;
+    var req = new REQ(fileName);
+}
+
+
+</script>
+
+</html>

@@ -6,19 +6,23 @@
 
 {% block display %}
 
+    <article>
+
     <h1>{{ page.title }}</h1>
     <p class="meta">{{ page.date }}</p>
 
 {% with categories=page.categories.all %}
     {% if categories %}
-        <h3>Posted in:</h3>
+    <!--<h3>Posted in:</h3>-->
         <ul>
+            <div style="">
             {% for category in categories %}
                 <li style="display: inline">
                     {% image category.icon fill-32x32 style="vertical-align: middle" %}
                     {{ category.name }}
                 </li>
             {% endfor %}
+            </div>
         </ul>
     {% endif %}
 {% endwith %}
@@ -48,8 +52,10 @@
         {% elif block.block_type == 'image' %}
                {% image block.value width-600 %}
 
+	{% comment %}       
         {% elif block.block_type == 'video'%}
 	       {{ block }}
+        {% endcomment %}
 
 	{% else %}
            <section class="block-{{ block.block_type }}">
@@ -81,5 +87,7 @@
     {% endif %}
 
     <p><a href="{{ page.get_parent.url }}">Return to home</a></p>
+
+    </article>
 
 {% endblock %}    

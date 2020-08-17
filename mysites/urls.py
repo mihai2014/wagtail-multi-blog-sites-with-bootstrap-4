@@ -7,6 +7,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
+from site1 import views as site1_views
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
@@ -16,6 +17,15 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
 
+    url(r'^answer_me/', site1_views.answer_me),
+    url(r'^answer_me2/', site1_views.answer_me2),
+    url(r'^reply/', site1_views.reply),
+    url(r'^reply2/$', site1_views.reply2),
+    url(r'^reply3/$', site1_views.reply3),
+    url(r'^send_data/$', site1_views.send_data), 
+    url(r'^reply_form/$', site1_views.reply_form),
+    url(r'^redirect-response/$', site1_views.redirect_response, name='redirect-response'),
+    url(r'^echo/', site1_views.echo),    
 ]
 
 

@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["localhost","mihaicorciu.ro","www.mihaicorciu.ro"]
 
 # Application definition
 

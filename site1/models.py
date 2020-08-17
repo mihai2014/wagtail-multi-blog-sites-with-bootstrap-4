@@ -29,12 +29,24 @@ from wagtail.embeds.blocks import EmbedBlock
 from src.tools import  PageTree
 from src.blocks import TwoColumnBlock, ThreeColumnBlock, VideoBlock
 
+def side(context):
+    Posts = Site1Index.objects.all()[0]
+    blogpages = Posts.get_children().live().order_by('-first_published_at')
+    context['last_posts'] = blogpages[:4]
+
+
 class Site1Home(Page):
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
     ]
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        side(context)
+        return context
 
 class Site1Index(Page):
     intro = RichTextField(blank=True)
@@ -48,6 +60,7 @@ class Site1Index(Page):
         context = super().get_context(request)
         blogpages = self.get_children().live().order_by('-first_published_at')
         context['blogpages'] = blogpages
+        side(context)
         return context
 
 
@@ -80,7 +93,7 @@ class Site1Category(models.Model):
 
 class Site1Post(Page):
     date = models.DateField("Post date")
-    intro = models.CharField(max_length=250)
+    intro = models.CharField(max_length=250, blank=True)
 #    body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=Site1Tag, blank=True)
     categories = ParentalManyToManyField('site1.Site1Category', blank=True)
@@ -95,7 +108,7 @@ class Site1Post(Page):
         ('code_bash', blocks.TextBlock()),
         ('code_py', blocks.TextBlock()),
         ('code_htmljs', blocks.TextBlock()),
-        ('video', VideoBlock()),
+        #('video', VideoBlock()),
     ],null=True,blank=True)
 
 
@@ -123,6 +136,12 @@ class Site1Post(Page):
         InlinePanel('gallery_images', label="Gallery images"),
     ]
 
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        side(context)
+        return context
+    
 
 class Site1PageGalleryImage(Orderable):
     page = ParentalKey(Site1Post, on_delete=models.CASCADE, related_name='gallery_images')
@@ -142,14 +161,13 @@ class Site1Tree(Page):
         context = super().get_context(request)
 
         index = Site1Index.objects.filter(title='Posts')[0]
-        posts = index.get_children().live()
+        #posts = index.get_children().live()
         #print(posts)
         #context['posts'] = posts
 
         html_menu = PageTree(index).html_menu
         context['menu'] = html_menu
-        #SetContext(context)
-
+        side(context)
         return context
 
 class Site1Search(Page):
@@ -159,6 +177,7 @@ class Site1Search(Page):
         s = get_search_backend()
         posts = s.search(word, Site1Post)
         context['posts'] = posts
+        side(context)
         return context
 
 class Site1QueryCategory(Page):
@@ -176,6 +195,7 @@ class Site1QueryCategory(Page):
 
             blogpages = Site1Post.objects.filter(categories=rez[0])
             context['blogpages'] = blogpages
+            side(context)
             return context
 
         template = 'site1_index.html'
@@ -184,7 +204,8 @@ class Site1CategoryIndex(Page):
     def get_context(self, request):
         categories = Site1Category.objects.all()
         context = super().get_context(request)
-        context['categories'] = categories        
+        context['categories'] = categories       
+        side(context)
         return context
 
 class Site1TagIndex(Page):
@@ -198,6 +219,7 @@ class Site1TagIndex(Page):
                 tagList.append(tag.tag.name)
         tagList.sort()
         context['tags'] = tagList
+        side(context)
         return context
 
 class Site1QueryTag(Page):
@@ -210,6 +232,6 @@ class Site1QueryTag(Page):
         # Update template context
         context = super().get_context(request)
         context['blogpages'] = blogpages
-        #SetContext(context)
+        side(context)
         return context
 

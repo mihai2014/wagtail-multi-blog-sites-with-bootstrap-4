@@ -94,7 +94,7 @@ class Site2NewPost(Page):
 
 class Site2Post(Page):
     date = models.DateField("Post date")
-    intro = models.CharField(max_length=250)
+    intro = models.CharField(max_length=250, blank=True)
 #    body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=Site2Tag, blank=True)
     categories = ParentalManyToManyField('site2.Site2Category', blank=True)

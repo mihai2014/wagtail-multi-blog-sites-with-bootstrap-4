@@ -1,0 +1,22 @@
+{% extends "site1/layout.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
+
+{% block body_class %}template-site1response{% endblock %}
+
+{% block display %}
+
+    <h1>{{ page.title }}</h1>
+    <!--
+    <p class="meta">{{ page.date }}</p>
+    <div class="intro">{{ page.intro }}</div>
+    -->
+    {% autoescape off %}
+    <p>{{ msg }}</p>
+    {% endautoescape %}
+
+    {% comment %} {{ page.body|richtext }} {% endcomment %}
+
+    <p><a href = "/posts/get-vs-post/">Back</p>
+    <p><a href="/">Home</a></p>
+{% endblock %}

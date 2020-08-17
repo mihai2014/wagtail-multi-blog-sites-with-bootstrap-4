@@ -9,7 +9,7 @@ class ColumnBlock(blocks.StreamBlock):
     paragraph = blocks.RichTextBlock()
     image = ImageChooserBlock()
 
-    htmljs = blocks.TextBlock()
+    exe_htmljs = blocks.TextBlock()
     code_bash = blocks.TextBlock()
     code_py = blocks.TextBlock()
     code_htmljs = blocks.TextBlock()

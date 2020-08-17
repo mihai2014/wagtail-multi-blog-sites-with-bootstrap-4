@@ -14,6 +14,8 @@
         <div class="card" style="margin-bottom: 10px; margin-top: 10px;">
         <div class="card-body">
 
+	<article>	
+
         {% with post=post.specific %}
             <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
 	    <p class="meta">{{ post.date }}</p>
@@ -25,7 +27,9 @@
 		{% endif %}   
             {% endfor %}
         {% endwith %}
-        
+
+	</article>
+
         </div>
 	</div>         
 

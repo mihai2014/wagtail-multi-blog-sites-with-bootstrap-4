@@ -1,0 +1,24 @@
+{% extends "site1/layout.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
+
+{% block body_class %}template-site1redirectresponse{% endblock %}
+
+{% block display %}
+
+    <h1>{{ page.title }}</h1>
+    <!--
+    <p class="meta">{{ page.date }}</p>
+    <div class="intro">{{ page.intro }}</div>
+    -->
+
+    <p>Posted data:</p>
+    <p>Firstname: {{ firstname }}</p>
+    <p>Lastname: {{ lastname }}</p>
+    <p>File: {{ about_file }}</p>
+
+    {% comment %} {{ page.body|richtext }} {% endcomment %}
+
+    <p><a href = "/posts/form-sending-data-vs-ajax-data-submission/">Back</p>
+    <p><a href="/">Home</a></p>
+{% endblock %}
