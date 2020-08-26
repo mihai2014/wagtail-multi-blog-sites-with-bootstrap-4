@@ -9,7 +9,13 @@ from wagtail.documents import urls as wagtaildocs_urls
 from search import views as search_views
 from site1 import views as site1_views
 
+from wagtail.contrib.sitemaps.views import sitemap
+#from django.urls import path
+
 urlpatterns = [
+    url(r'^sitemap.xml$', sitemap),
+    url(r'^robots.txt$', site1_views.robots),
+
     url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/', include(wagtailadmin_urls)),
@@ -17,6 +23,8 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
 
+    url(r'^about/', site1_views.about),
+    url(r'^page/', site1_views.page),
     url(r'^answer_me/', site1_views.answer_me),
     url(r'^answer_me2/', site1_views.answer_me2),
     url(r'^reply/', site1_views.reply),
@@ -25,9 +33,13 @@ urlpatterns = [
     url(r'^send_data/$', site1_views.send_data), 
     url(r'^reply_form/$', site1_views.reply_form),
     url(r'^redirect-response/$', site1_views.redirect_response, name='redirect-response'),
-    url(r'^echo/', site1_views.echo),    
+    url(r'^echo/', site1_views.echo),   
+
+    #catch all view
+    #url(r'^(.*)$', site1_views.admin_404),
 ]
 
+handler404 = 'site1.views.admin_404'
 
 if settings.DEBUG:
     from django.conf.urls.static import static

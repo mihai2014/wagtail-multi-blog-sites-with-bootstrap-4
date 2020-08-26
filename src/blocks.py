@@ -3,6 +3,19 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 
+
+class DjangoBlock(blocks.StructBlock):
+
+    urls =  blocks.TextBlock()
+    views = blocks.TextBlock()
+    template = blocks.TextBlock()
+
+    class Meta:
+        template = 'src/blocks/django_block.html'
+        icon = 'placeholder'
+        label = 'Django Block'
+
+
 class ColumnBlock(blocks.StreamBlock):
 
     heading = blocks.CharBlock(classname="full title")
@@ -13,6 +26,7 @@ class ColumnBlock(blocks.StreamBlock):
     code_bash = blocks.TextBlock()
     code_py = blocks.TextBlock()
     code_htmljs = blocks.TextBlock()
+    code_django = DjangoBlock()
 
     class Meta:
         template = 'src/blocks/column.html'

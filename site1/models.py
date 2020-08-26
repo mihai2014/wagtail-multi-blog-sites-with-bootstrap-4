@@ -25,9 +25,10 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail.core import blocks
 
-from src.tools import  PageTree
-from src.blocks import TwoColumnBlock, ThreeColumnBlock, VideoBlock
+from src.tools import  PageTree, readFile
+from src.blocks import TwoColumnBlock, ThreeColumnBlock, VideoBlock, DjangoBlock
 
 def side(context):
     Posts = Site1Index.objects.all()[0]
@@ -38,9 +39,22 @@ def side(context):
 class Site1Home(Page):
     body = RichTextField(blank=True)
 
+    content = StreamField([
+        ('paragraph', blocks.RichTextBlock()),
+        ('exe_htmljs', blocks.TextBlock()),
+    ],null=True,blank=True)
+
+    #content_panels = Page.content_panels + [
+    #    FieldPanel('body', classname="full"),
+    #    #StreamField('exe_htmljs'),
+    #]
+
     content_panels = Page.content_panels + [
-        FieldPanel('body', classname="full"),
+        FieldPanel('body'),
+        StreamFieldPanel('content'),
     ]
+
+
 
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
@@ -108,6 +122,7 @@ class Site1Post(Page):
         ('code_bash', blocks.TextBlock()),
         ('code_py', blocks.TextBlock()),
         ('code_htmljs', blocks.TextBlock()),
+        ('code_django', DjangoBlock()),
         #('video', VideoBlock()),
     ],null=True,blank=True)
 
@@ -235,3 +250,28 @@ class Site1QueryTag(Page):
         side(context)
         return context
 
+#testing--------------------------------------------------------------------------
+class Site1HtmlPage(Page):
+    html_file = models.CharField(max_length=250, blank=True)
+    #tags = ClusterTaggableManager(through=Site1Tag, blank=True)
+    #categories = ParentalManyToManyField('site1.Site1Category', blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('html_file', classname="full"),
+        #FieldPanel('tags'),
+        #FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField('html_file'),
+    ]
+
+    #fileStr = readFile('/static/page/'+html_file)
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        #context['fileStr'] = fileStr
+        side(context)
+        return context
+#--------------------------------------------------------------------------------

@@ -1,7 +1,49 @@
 /* layout */
 body {
-  //padding-top: 70px;
-  //background-color: #eff5ff;
+  height: 100vh;	
+  /*padding-top: 70px;*/
+  background-color: #eff5ff;
+  background-image: url("/static/site1/img/circuit2.png")  ;
+  background-size: cover;
 }
 
+/* django-block: urls,views,template */
+.dj-code .title {
+  border: 1px solid black;
+  width: min-content;
+  background-color: hsla(185, 100%, 44%, 0.3);
+}
 
+.dj-code .zone {
+/*  border: 1px solid black; */
+}
+
+/* content and side */
+#content, #last-posts, #clock {
+ box-shadow: 15px 15px 10px gray;
+ background-color: white;
+}
+
+#content {
+  padding: 15px;	
+}
+
+#clock {
+  display: inline;	
+}	
+
+
+/* home page */
+#home_img {
+  height: auto;
+  width: 100%;
+}
+
+#home_title {
+  text-align: center;
+}
+
+#void {
+  height: 1000px;
+  background-color: white;  
+}

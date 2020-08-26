@@ -12,4 +12,3 @@ Streamfield definitions are including:
 -two/three columns page arrangement
 -text code, automatically colored with javascript code prettifyer
 -html/js executable field
-# wagtail-nice-blog

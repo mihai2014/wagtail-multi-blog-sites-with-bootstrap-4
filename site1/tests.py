@@ -1,35 +1,27 @@
 from django.test import TestCase
+from wagtail.tests.utils import WagtailPageTests
+from django.test import Client
 
-#import sys
-#sys.path.append('/path/to/whatever')
-#sys.path += ["whatever"]
-#print(sys.path)
-#import os
-#print(os.getcwd())
+from site1.models import Site1Index
 
+class TestTree(WagtailPageTests):
 
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from selenium.webdriver.firefox.webdriver import WebDriver
+    #modify this
+#    def test_if_tree_not_empty(self):
+        #c = Client()
+        #response = c.post('/login/', {'username': 'john', 'password': 'smith'})
+        #response.status_code
+        #response = c.get('/')
+        #print(response.content)
+        #self.assertEqual(response.status_code, 200)
 
-class MySeleniumTests(StaticLiveServerTestCase):
-    #fixtures = ['user-data.json']
+#    def test_subpage(self):
+        #response = self.client.get('tree')
+        #print(response.content)
+        #self.assertEqual(response.status_code, 200,
+        #             'Request the open positions page')        
 
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        cls.selenium = WebDriver()
-        cls.selenium.implicitly_wait(10)
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.selenium.quit()
-        super().tearDownClass()
-
-    def test_login(self):
-        #self.selenium.get('%s%s' % (self.live_server_url, '/login/'))
-        #username_input = self.selenium.find_element_by_name("username")
-        #username_input.send_keys('myuser')
-        #password_input = self.selenium.find_element_by_name("password")
-        #password_input.send_keys('secret')
-        #self.selenium.find_element_by_xpath('//input[@value="Log in"]').click()
+    def test_tree(self):
+        Posts = Site1Index.objects.all()[0]       
+        print(Posts)
         pass

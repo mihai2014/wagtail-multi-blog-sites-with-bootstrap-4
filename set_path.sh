@@ -1,1 +1,2 @@
-export PATH=$PATH:'pwd'
+export PATH=$PATH:$(pwd)
+echo $PATH

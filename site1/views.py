@@ -2,13 +2,39 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from time import sleep
 import json
 import math
 import re
 from django.shortcuts import redirect
 from django.urls import reverse
+
+import os
+
+from django.http import  HttpResponseNotFound
+from django.template.loader import render_to_string
+
+#-----------------------testing---------------------------
+
+#def admin_404(request):
+#    return HttpResponseNotFound(render_to_string('wagtailadmin/404.html'))
+def admin_404(request, exception=None):
+    return HttpResponse('Error handler content', status=404)
+
+#http://localhost:8000/page/?name=codeberry.html
+def page(request):
+    body = request.GET['name']
+    #return render(request, 'site1/page.html', {'body':body})
+    return HttpResponse(name)
+
+#----------------------------------------------------------
+
+def robots(request):
+    return HttpResponseRedirect("/static/site1/robots.txt")
+
+def about(request):
+    return render(request, 'site1/about.html', {})
 
 def answer_me(request):
     method = request.method

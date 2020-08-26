@@ -6,4 +6,15 @@
 
 {% block display %}
     {{ page.body|richtext }}
+
+    {% for block in page.content %}
+
+        {% if block.block_type == 'paragraph'%}
+               {{ block.value }}
+        {% elif block.block_type == 'exe_htmljs'%}
+               {{ block.value|richtext }}
+        {% else %}
+	{% endif %}
+	
+    {% endfor %}
 {% endblock %}

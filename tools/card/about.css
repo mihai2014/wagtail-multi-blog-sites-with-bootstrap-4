@@ -1,0 +1,122 @@
+/* Background colors for containers */
+
+/*
+.profile-card {
+  background-color: hsla(60, 100%, 50%, .4);
+}
+
+.head {
+  background-color: hsla(120, 100%, 50%, .4);
+}
+
+.content {
+  background-color: hsla(120, 100%, 50%, .4);
+}
+
+.profile-image {
+  background-color: hsla(300, 100%, 50%, .4);
+}
+
+.name-headline {
+  background-color: hsla(300, 100%, 50%, .4);
+}
+
+.about {
+  background-color: hsla(300, 100%, 50%, .4);
+}
+
+.links {
+  background-color: hsla(300, 100%, 50%, .4);
+}
+
+÷/
+
+/* CSS reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+/* Positioning */
+
+.profile-card {
+  width: 480px;
+  max-width: calc(100vw - 10px);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('jeremy-thomas-E0AHdsENmDg-unsplash.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.head, .links {
+  text-align: center;
+}
+
+.head, .content {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.content {
+  border-top: 1px solid hsla(0, 0%, 30%, .8);
+}
+
+.head, .about {
+  margin-bottom: 10%;
+}
+
+.content {
+  padding: 5% 10%;
+}
+
+/* Profile image */
+
+.profile-image {
+  margin-top: -60px;
+}
+
+img {
+  width: 120px;
+  height: 120px; 
+  border-radius: 50%;
+  padding: 1px;
+  background-color: #666;
+  filter: grayscale(50%);
+  transition: all 0.5s ease-in-out;
+/*
+  object-fit: cover;
+  object-position: -20% 0;
+  width: 300px;
+  height: 337px;
+*/  
+}
+
+img:hover {
+  filter: grayscale(20%);
+  transform: scale(1.1);
+}
+
+.profile-card {
+  background-color: hsla(0, 0%, 100%, .5);
+  border-radius: 4px;
+  box-shadow: hsla(0, 0%, 0%, .8) 10px 10px 80px;
+}
+
+/* Contact links */
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+}
+

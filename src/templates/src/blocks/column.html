@@ -15,7 +15,13 @@
                <pre class="prettyprint">{{ block.value }}</pre>
         {% elif block.block_type == 'code_py'%}
                <pre class="prettyprint lang-python">{{ block.value }}</pre>
-
+        {% elif block.block_type == 'code_django'%}
+               <section class="dj-code">
+ 	         <div class="zone"><div class="title">urls</div><pre class="prettyprint lang-python dj-urls">{{ block.value.urls }}</pre></div>	      
+		 <div class="zone"><div class="title">views</div><pre class="prettyprint lang-python dj-views">{{ block.value.views }}</pre></div>
+	         <div class="zone"><div class="title">template</div><pre class="prettyprint lang-python dj-template">{{ block.value.template }}</pre></div>
+               </section>
+	       <br>
 
         {% elif block.block_type == 'image' %}
             {% image block.value width-900 class="img-responsive" %}

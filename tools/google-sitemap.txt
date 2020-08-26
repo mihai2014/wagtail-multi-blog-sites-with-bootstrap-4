@@ -1,0 +1,2 @@
+Submit sitemap
+https://www.google.com/ping?sitemap=https://mihaicorciu.ro/sitemap.xml

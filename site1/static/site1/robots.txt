@@ -1,0 +1,17 @@
+# Group 1
+#User-agent: Googlebot
+#Disallow: /nogooglebot/
+
+# Group 2
+User-agent: *
+Allow: /
+
+Sitemap: http://www.mihaicorciu.com/sitemap.xml
+
+# Group 3
+User-agent: *
+Allow: /
+
+Sitemap: http://mihaicorciu.com/sitemap.xml
+
+

@@ -1,0 +1,2 @@
+grep  "skin"  `find . -type f -name "*.*"` | less
+

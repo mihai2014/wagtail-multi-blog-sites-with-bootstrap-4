@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="Corciu Mihai - Web developping">
+  <meta name="keywords" content="Corciu, Mihai, Oltenita">  
+  <title>Corciu Mihai</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!--<link href="{% static 'fa/font-awesome.min.css' %}" rel="stylesheet">-->	  <!--<link rel="stylesheet" href="about.css">-->
+  <link href="{% static 'site1/css/about.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div class="profile-card">
+    <div class="head">
+      <div class="profile-image">
+        <img src="{% static 'site1/img/me2.png' %}" alt="Corciu Mihai">
+      </div>
+      <div class="name-headline">
+        <h1>Corciu Mihai</h1>
+        <h2>Web devel</h2>
+        <span>from</span>
+        <p><i class="fa fa-map-marker"></i> Oltenita, RO</p>
+	<br>
+	<p><a href="https://mihaicorciu.ro">Blog</a></p>
+      </div>
+    </div>
+    <div class="content">
+      <p class="about">
+        Love to fiddle with the details of the web apps.
+      </p>
+      <section class="links">
+        <h2>Contact:</h2>
+        <ul>
+	  <!--<i class="fa fa-facebook" aria-hidden="true"></i>-->
+          <li><a href="https://mihaicorciu.ro/" title="mysite" class="social-icon"><i class="fa fa-linux" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/mihai-corciu-oltenita/" title="LinkedIn" class="social-icon"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+          <li><a href="https://github.com/mihai2014" title="GitHub" class="social-icon"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+	  <li><a href="https://mihai2014.github.io/" title="GitHub" class="social-icon"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

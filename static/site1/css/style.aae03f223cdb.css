@@ -1,0 +1,15 @@
+/* layout */
+body {
+  /*padding-top: 70px;*/
+  /*background-color: #eff5ff;*/
+}
+
+.dj-code .title {
+  border: 1px solid black;
+  width: min-content;
+  background-color: hsla(185, 100%, 44%, 0.3);
+}
+
+.dj-code .zone {
+/*  border: 1px solid black; */
+}
