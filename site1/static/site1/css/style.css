@@ -1,9 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.display_zone {
+  min-height: calc(100vh - 125px);	
+}
+
+#main {
+  /*margin-top: 80px;*/
+}
+
+.footer {
+  height: 125px;
+  background-color: #0275d8; 
+  padding-top: 1rem;
+  color: white;
+}
+
+
 /* layout */
 body {
   height: 100vh;	
   /*padding-top: 70px;*/
   background-color: #eff5ff;
-  background-image: url("/static/site1/img/circuit2.png")  ;
+  background-image: url("/static/site1/img/circuit2.png");  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 
@@ -32,6 +55,9 @@ body {
   display: inline;	
 }	
 
+#main {
+  margin-bottom: 10px;
+}
 
 /* home page */
 #home_img {
@@ -44,6 +70,7 @@ body {
 }
 
 #void {
-  height: 1000px;
+  /*height: 1000px;*/
+  height: 30vw;	
   background-color: white;  
 }

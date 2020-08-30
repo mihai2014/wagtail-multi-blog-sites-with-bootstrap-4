@@ -88,6 +88,11 @@
 
 {% block content %}
 
+  <div class="display_zone">
+
+  <!-- below navbar setting for sticky footer ... -->
+  <br><br><br><br>
+
   {% csrf_token %}
 
   <!--
@@ -103,7 +108,7 @@
     <!-- Brand -->
     <a class="navbar-brand" href="#">
       <img src="{% static 'site1/img/web-devel.png' %}" alt="Logo" style="width:60px;">
-      Web devel
+      Django
     </a>
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -118,7 +123,7 @@
         <li class="nav-item"><a class="nav-link" href="{{slugurl}}/tree/">Site Tree</a></li>
         <li class="nav-item"><a class="nav-link" href="{{slugurl}}/categories/">Categories</a></li>
         <li class="nav-item"><a class="nav-link" href="{{slugurl}}/tags/">Tags</a></li>
-	<!--<li class="nav-item"><a class="nav-link" href="{{slugurl}}/cheat-sheets/">Cheat sheets</a></li>-->
+	<li class="nav-item"><a class="nav-link" href="{{slugurl}}/cheat-sheets/">Cheat sheets</a></li>
         <li class="nav-item"><a class="nav-link" href="{{slugurl}}/repos/">Useful repos</a></li>
 	<li class="nav-item"><a class="nav-link" href="{{slugurl}}/about/">About</a></li>
       </ul>
@@ -132,7 +137,7 @@
 
 
   <!-- Page Content -->
-  <div id="" class="container" style="margin-top: 80px;">
+  <div id="main" class="container" style="">
 
     <div class="row">    
 
@@ -171,9 +176,11 @@
 
   </div>
 
+  </div> <!-- end display_zone -->
 
   <!-- Footer -->
-  <footer class="page-footer font-small blue pt-4 bg-primary text-white" >
+  <!--  
+  <footer class="page-footer font-small blue pt-4 bg-primary text-white" class="footer" >
 
     <div class="row">
 
@@ -194,7 +201,7 @@
           <li><a class="text-white" href="https://mihai2014.github.io/">github.io</a></li>
         </ul>	      
       </div>
-
+    
     </div>
 
 
@@ -203,8 +210,37 @@
     </div>
 
   </footer>
-<!-- Footer -->
   <div id="void"></div>
+  -->
+<!-- Footer -->
+
+
+  <footer class="footer">
+    <div class="row">
+
+      <div class="col-sm-4 text-center" >
+        <ul class="list-unstyled">
+          <li><a class="text-white" href="https://mihaicorciu.ro">mihaicorciu.ro</a></li>
+          <li><a class="text-white" href="https://www.linkedin.com/in/mihai-corciu-oltenita/">LinkedIn</a></li>
+        </ul>
+      </div>
+
+     <div class="col-sm-4 footer-copyright text-center">
+          <p class="m-0 text-center ">Copyright &copy; Corciu Mihai - Oltenita - 2020</p>
+          <p class="m-0 text-center ">mc200520052005@yahoo.com</p>
+      </div>
+      <div class="col-sm-4 text-center" >
+        <ul class="list-unstyled">
+          <li><a class="text-white" href="https://github.com/mihai2014">GitHub repos</a></li>
+          <li><a class="text-white" href="https://mihai2014.github.io/">github.io</a></li>
+        </ul>         
+      </div>
+      
+    </div>	
+
+    <img class="img-fluid mx-auto d-block" src="{% static 'img/wagtail_badges/wagtail_badge_retina_white.png' %}" alt="Wagtail-CMS logo" width="250" />
+
+  </footer> 
 
 
 {% endblock %}
