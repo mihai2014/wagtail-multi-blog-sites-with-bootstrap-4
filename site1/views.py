@@ -15,6 +15,8 @@ import os
 from django.http import  HttpResponseNotFound
 from django.template.loader import render_to_string
 
+from src.tools import readFile
+
 #-----------------------testing---------------------------
 
 #def admin_404(request):
@@ -24,8 +26,17 @@ def admin_404(request, exception=None):
 
 #http://localhost:8000/page/?name=codeberry.html
 def page(request):
-    body = request.GET['name']
-    #return render(request, 'site1/page.html', {'body':body})
+    name = request.GET['name']
+
+    base = os.getcwd()
+    path = "site1/" + "static/site1/pages/" + name
+
+    #body = readFile(path)
+    f = open(path, "r")
+    body = f.read();
+    f.close()
+
+    return render(request, 'site1/site1_page.html', {'body':body})
     return HttpResponse(name)
 
 #----------------------------------------------------------

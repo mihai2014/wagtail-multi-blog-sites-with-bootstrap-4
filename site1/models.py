@@ -30,6 +30,11 @@ from wagtail.core import blocks
 from src.tools import  PageTree, readFile
 from src.blocks import TwoColumnBlock, ThreeColumnBlock, VideoBlock, DjangoBlock
 
+import os
+from django.shortcuts import render
+
+
+#setting side content
 def side(context):
     Posts = Site1Index.objects.all()[0]
     blogpages = Posts.get_children().live().order_by('-first_published_at')
@@ -43,11 +48,6 @@ class Site1Home(Page):
         ('paragraph', blocks.RichTextBlock()),
         ('exe_htmljs', blocks.TextBlock()),
     ],null=True,blank=True)
-
-    #content_panels = Page.content_panels + [
-    #    FieldPanel('body', classname="full"),
-    #    #StreamField('exe_htmljs'),
-    #]
 
     content_panels = Page.content_panels + [
         FieldPanel('body'),
@@ -250,28 +250,31 @@ class Site1QueryTag(Page):
         side(context)
         return context
 
-#testing--------------------------------------------------------------------------
-class Site1HtmlPage(Page):
-    html_file = models.CharField(max_length=250, blank=True)
-    #tags = ClusterTaggableManager(through=Site1Tag, blank=True)
-    #categories = ParentalManyToManyField('site1.Site1Category', blank=True)
+#this page will display raw html files as body
+class Site1RawHtml(Page):
+    file_name = models.CharField(max_length=255)
 
     content_panels = Page.content_panels + [
-        FieldPanel('html_file', classname="full"),
-        #FieldPanel('tags'),
-        #FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('file_name', classname="full")
     ]
 
-    search_fields = Page.search_fields + [
-        index.SearchField('html_file'),
-    ]
+#    search_fields = Page.search_fields + [
+#        index.SearchField(''),
+#    ]
 
-    #fileStr = readFile('/static/page/'+html_file)
-
-    def get_context(self, request):
-        # Update context to include only published posts, ordered by reverse-chron
+    def serve(self, request):
         context = super().get_context(request)
-        #context['fileStr'] = fileStr
+
+        #name = "codeberry.html"
+        name = self.file_name
+
+        base = os.getcwd()
+        path = "site1/" + "static/site1/pages/" + name
+
+        f = open(path, "r")
+        body = f.read();
+        f.close()
+
         side(context)
-        return context
-#--------------------------------------------------------------------------------
+
+        return render(request, 'site1/site1_page.html', {'body':body})

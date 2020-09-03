@@ -7,7 +7,7 @@ blogpages = Posts.get_children().filter(first_published_at__gte=datetime.datetim
 #year, month, day, hour, minute, second, microsecond
 
 for page in blogpages:
-    print("nothing")
+    #print("nothing")
     pass
     print(page)
     page.delete()
